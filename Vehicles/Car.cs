@@ -4,6 +4,7 @@ public enum FuelType
 {
     Petrol,
     Diesel,
+    Gas,
     Electricity
 }
 public class Car : Vehicle

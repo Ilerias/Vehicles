@@ -74,13 +74,13 @@ public class Manager : IManager
     public Vehicle GetMaxTorqueHorsePowerRateToDeliver()
     {
         Console.Write("Adja meg a rakomány méretét: ");
-        var cargo = int.Parse(Console.ReadLine() ?? String.Empty);
+        var cargo = int.Parse(Console.ReadLine() ?? string.Empty);
         var possibleTrucks = new List<Truck>();
         var trucks = Vehicles.OfType<Truck>().ToList();
 
         foreach (var truck in trucks)
         {
-            if (truck.PayloadCapacity <= cargo)
+            if (truck.PayloadCapacity >= cargo)
             {
                 possibleTrucks.Add(truck);
             }
@@ -117,7 +117,7 @@ public class Manager : IManager
                     count++;
                 }
             }
-            stats.Add(new FuelStat() {FuelName = fuelType.ToString(), Percentage = (int)((double)count/cars.Count*100)});
+            stats.Add(new FuelStat() {FuelName = fuelType.ToString(), Percentage = (int)((double)count / cars.Count * 100) });
         }
         
         File.WriteAllText("fuel_stats.json", JsonSerializer.Serialize(stats));
