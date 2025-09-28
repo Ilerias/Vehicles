@@ -1,13 +1,16 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Xml;
 
 namespace Vehicles;
 
 public class Manager : IManager
 {
-    public List<Vehicle> Vehicles { get; set; }
+    private List<Vehicle> Vehicles { get; set; } = [];
 
-    public int VehicleCount { get { return Vehicles.Count; } }
+    private LinkedList<Car> OldTimerVehicles { get; set; } = [];
+
+    public int VehicleCount => Vehicles.Count;
 
     public Manager()
     {
@@ -123,4 +126,57 @@ public class Manager : IManager
         File.WriteAllText("fuel_stats.json", JsonSerializer.Serialize(stats));
     }
 
+    public void InitializeLinkedList()
+    {
+        foreach (var vehicle in Vehicles.ToList())
+        {
+            if (vehicle is Car { IsOldTimer: true } car)
+            {
+                OldTimerVehicles.AddLast(car);
+                Vehicles.Remove(vehicle);
+            }
+        }
+    }
+
+    public void PrintVehicles()
+    {
+        Vehicles.ForEach( vehicle => Console.WriteLine(vehicle.ToString()) );
+    }
+
+    public void PrintOldTimers()
+    {
+        var node = OldTimerVehicles.First;
+        while (node != null)
+        {
+            Console.WriteLine($"{(node.Previous != null ? node.Previous.Value : '-')} <-- {node.Value} --> {(node.Next != null ? node.Next.Value : '-')}");
+            node = node.Next;
+        }
+    }
+
+    public void SortOldTimers()
+    {
+        var currentNode = OldTimerVehicles.First.Next;
+        while (currentNode != null)
+        {
+            var nextNode = currentNode.Next;
+            var sortedNode = currentNode.Previous;
+
+            OldTimerVehicles.Remove(currentNode);
+
+            while (sortedNode != null && sortedNode.Value.Price.CompareTo(currentNode.Value.Price) > 0)
+            {
+                sortedNode = sortedNode.Previous;
+            }
+
+            if (sortedNode == null)
+            {
+                OldTimerVehicles.AddFirst(currentNode);
+            }
+            else
+            {
+                OldTimerVehicles.AddAfter(sortedNode, currentNode);
+            }
+            currentNode = nextNode;
+        }
+    }
 }

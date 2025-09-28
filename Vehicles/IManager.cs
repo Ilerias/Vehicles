@@ -15,4 +15,12 @@ public interface IManager
     Vehicle GetMaxTorqueHorsePowerRateToDeliver();
     
     void CreateFuelStatistic();
+
+    void InitializeLinkedList();
+
+    void PrintVehicles();
+
+    void PrintOldTimers();
+    
+    void SortOldTimers();
 }

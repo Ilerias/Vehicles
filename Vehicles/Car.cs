@@ -18,6 +18,9 @@ public class Car : Vehicle
     {
         return false;
     }
+
+    public bool IsOldTimer => DateTime.Now.Year - Year >= 20;
+    
 }
 
 

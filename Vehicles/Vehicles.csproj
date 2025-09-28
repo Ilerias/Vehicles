@@ -19,4 +19,10 @@
       </None>
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Update="CustomException.cs">
+        <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      </Compile>
+    </ItemGroup>
+
 </Project>

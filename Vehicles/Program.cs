@@ -78,6 +78,17 @@ class Program
             Console.WriteLine(ex);
         }
         
+        
+        manager.InitializeLinkedList();
+        Console.WriteLine();
+        manager.PrintVehicles();
+        Console.WriteLine();
+        manager.PrintOldTimers();
+        Console.WriteLine();
+        manager.SortOldTimers();
+        Console.WriteLine();
+        manager.PrintOldTimers();
+        
         manager.CreateFuelStatistic();
     }
 }

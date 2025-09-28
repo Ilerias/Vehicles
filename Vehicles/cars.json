@@ -97,5 +97,49 @@
     "Year": 2021,
     "LicensePlateNumber": "BCD2345",
     "Price": 13000000
+  },
+  {
+    "Brand": "Ford",
+    "Name": "Mustang",
+    "Color": "Blue",
+    "HorsePower": 210,
+    "Torque": 300,
+    "Fuel": 1,
+    "Year": 1967,
+    "LicensePlateNumber": "EFG3456",
+    "Price": 20000000
+  },
+  {
+    "Brand": "Cadillac",
+    "Name": "Eldorado",
+    "Color": "White",
+    "HorsePower": 340,
+    "Torque": 430,
+    "Fuel": 1,
+    "Year": 1972,
+    "LicensePlateNumber": "KLM7890",
+    "Price": 22000000
+  },
+  {
+    "Brand": "Chevrolet",
+    "Name": "Impala",
+    "Color": "Black",
+    "HorsePower": 235,
+    "Torque": 355,
+    "Fuel": 1,
+    "Year": 1965,
+    "LicensePlateNumber": "HIJ5678",
+    "Price": 18000000
+  },
+  {
+    "Brand": "Chevrolet",
+    "Name": "Camaro",
+    "Color": "Red",
+    "HorsePower": 275,
+    "Torque": 360,
+    "Fuel": 1,
+    "Year": 1969,
+    "LicensePlateNumber": "NOP1234",
+    "Price": 24000000
   }
 ]
